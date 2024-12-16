@@ -32,7 +32,7 @@ const Profile = () => {
               Renato Rocha Ferreira
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ marginBottom: '20px' }}>
-              Full Stack Developer - Python | Django | ReactJS 
+              Full Stack Developer - Python | Django | ReactJS
             </Typography>
 
             <List>
@@ -47,7 +47,18 @@ const Profile = () => {
                 <ListItemIcon>
                   <PhoneIcon />
                 </ListItemIcon>
-                <ListItemText primary="+55 (12) 991752296" />
+                <ListItemText primary={<Link
+                  href="https://wa.me/5512991752296?text="
+                  target="_blank"
+                  rel="noopener"
+                  sx={{
+                    textDecoration: 'none',
+                    color: 'inherit'
+                  }}
+                >
+                  +55 (12) 991752296
+                </Link>}
+                />
               </ListItem>
               <Divider />
               <ListItem>

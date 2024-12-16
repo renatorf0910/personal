@@ -37,6 +37,7 @@ export default function Experience() {
             </div>
           );
         }
+        return null;
       })}
       <LanguagesDialog open={expanded?.open} title={expanded?.title} description={expanded?.description} close={handleClose} />
     </div>

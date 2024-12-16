@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import LanguagesDialog from './languages/LanguagesDialog';
 import * as language from "./languages/dict_infos.json"

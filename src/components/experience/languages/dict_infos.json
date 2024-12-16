@@ -7,5 +7,10 @@
   "Comandos Unix, Linux": "Utilização de comandos Unix/Linux para administração de servidores, automação de processos e gerenciamento de arquivos, garantindo eficiência nas operações de backend.",
   "Git e Github com chaves SSH": "Gestão de versionamento de código utilizando Git e GitHub, com configuração de chaves SSH para garantir segurança nas interações com repositórios remotos.",
   "API (Application Programming Interface)": "Desenvolvimento e integração de APIs (RESTful e SOAP), permitindo a comunicação eficiente entre sistemas e a reutilização de funcionalidades de software.",
-  "Docker e Containers": "Utilização de Docker para criar ambientes isolados, facilitando o desenvolvimento e a implantação de aplicações. Criação e configuração de contêineres para garantir consistência nos ambientes de desenvolvimento e produção."
+  "Docker e Containers": "Utilização de Docker para criar ambientes isolados, facilitando o desenvolvimento e a implantação de aplicações. Criação e configuração de contêineres para garantir consistência nos ambientes de desenvolvimento e produção.",
+  "ReactJS": "Experiência no desenvolvimento de aplicações interativas e escaláveis, utilizando componentes funcionais e de classe, hooks, gerenciamento de estado com Redux, além de integração com APIs externas.",
+  "ReactNative": "Experiência no desenvolvimento de aplicativos móveis nativos para iOS e Android utilizando React Native, incluindo navegação, integração com APIs, gerenciamento de estado e otimização de performance.",
+  "JavaScript": "Experiência sólida em JavaScript, incluindo ES6+, promessas, async/await, manipulação de DOM e desenvolvimento de lógicas complexas em front-end.",
+  "TailwindCSS": "Experiência com o uso do TailwindCSS para criar interfaces responsivas e customizáveis de forma rápida e eficiente, utilizando a abordagem de utilitários.",
+  "Bootstrap": "Experiência no uso do Bootstrap para criar layouts responsivos e modernos, implementando componentes e personalizações para melhorar a experiência do usuário."
 }

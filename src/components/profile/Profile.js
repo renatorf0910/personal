@@ -94,23 +94,6 @@ const Profile = () => {
                 />
               </ListItem>
             </List>
-
-            <Button
-              variant="outlined"
-              fullWidth
-              onClick={() => window.location.href = 'https://github.com/renatorf0910'}
-              sx={{
-                marginTop: '20px',
-                color: 'grey',
-                borderColor: '#e792f1',
-                '&:hover': {
-                  backgroundColor: 'grey',
-                  color: 'white'
-                }
-              }}
-            >
-              View GitHub
-            </Button>
           </CardContent>
         </ProfileCard>
       </Box>

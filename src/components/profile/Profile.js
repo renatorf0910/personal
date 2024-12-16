@@ -1,49 +1,123 @@
-import { Avatar, Grid, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import WorkIcon from '@mui/icons-material/Work';
-import DraftsIcon from '@mui/icons-material/Drafts';
+import React from 'react';
+import { Avatar, Typography, Box, Card, CardContent, List, ListItem, ListItemIcon, ListItemText, Divider, Button, Link } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { styled } from '@mui/material/styles';
+import Experience from '../experience/Experience';
+import Copyright from './Copyright';
 
-export default function Profile() {
+const ProfileCard = styled(Card)(({ theme }) => ({
+  maxWidth: 1000,
+  margin: '20px auto',
+  padding: theme.spacing(2),
+  borderRadius: '61px',
+  boxShadow: theme.shadows[10],
+  color: "grey"
+}));
+
+const Profile = () => {
   return (
     <>
-      <Typography variant="h6" component="h6" sx={{ textAlign: "center" }}>
-        <Avatar
-          alt="Renato"
-          src="https://github.com/renatorf0910.png"
-          sx={{ width: 56, height: 56 }}
-        />
-        Renato Rocha Ferreira
-      </Typography>
-      <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', justifyItems: "center" }}>
-        <nav aria-label="main mailbox folders">
-          <List>
-            <ListItem disablePadding>
+      <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        <ProfileCard>
+          <CardContent sx={{ textAlign: 'center' }}>
+            <Avatar
+              alt="Renato"
+              src="https://github.com/renatorf0910.png"
+              sx={{ width: 120, height: 120, margin: '0 auto 16px' }}
+            />
+            <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold' }}>
+              Renato Rocha Ferreira
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ marginBottom: '20px' }}>
+              Full Stack Developer - Python | Django | ReactJS 
+            </Typography>
 
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary="renatorf0910@gmail.com" />
+            <List>
+              <ListItem>
+                <ListItemIcon>
+                  <EmailIcon />
+                </ListItemIcon>
+                <ListItemText primary="renatorf0910@gmail.com" />
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <ListItemIcon>
+                  <PhoneIcon />
+                </ListItemIcon>
+                <ListItemText primary="+55 (12) 991752296" />
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <ListItemIcon>
+                  <LinkedInIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={
+                    <Link
+                      href="https://linkedin.com/in/renatorf0910"
+                      target="_blank"
+                      rel="noopener"
+                      sx={{
+                        textDecoration: 'none',
+                        color: 'inherit'
+                      }}
+                    >
+                      LinkedIn
+                    </Link>
+                  }
+                  secondary="https://linkedin.com/in/renatorf0910"
+                />
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <ListItemIcon>
+                  <GitHubIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={
+                    <Link
+                      href="https://github.com/renatorf0910"
+                      target="_blank"
+                      rel="noopener"
+                      sx={{
+                        textDecoration: 'none',
+                        color: 'inherit'
+                      }}
+                    >
+                      GitHub
+                    </Link>
+                  }
+                  secondary="https://github.com/renatorf0910"
+                />
+              </ListItem>
+            </List>
 
-            </ListItem>
-            <ListItem disablePadding>
-
-              <ListItemIcon>
-                <WorkIcon />
-              </ListItemIcon>
-              <ListItemText primary="Python | Django | React" />
-
-            </ListItem>
-          </List>
-        </nav>
+            <Button
+              variant="outlined"
+              fullWidth
+              onClick={() => window.location.href = 'https://github.com/renatorf0910'}
+              sx={{
+                marginTop: '20px',
+                color: 'grey',
+                borderColor: '#e792f1',
+                '&:hover': {
+                  backgroundColor: 'grey',
+                  color: 'white'
+                }
+              }}
+            >
+              View GitHub
+            </Button>
+          </CardContent>
+        </ProfileCard>
       </Box>
+      <Experience />
+      <Copyright />
     </>
-  )
-}
+  );
+};
+
+export default Profile;

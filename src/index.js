@@ -1,17 +1,37 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import App from './App';
-import theme from './theme';
+
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 
-root.render(
-  <ThemeProvider theme={theme}>
-    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-    <CssBaseline />
-    <App />
-  </ThemeProvider>,
-);
+function Index() {
+  const [theme, setTheme] = React.useState(darkTheme);
+
+  const toggleTheme = () => {
+    setTheme(theme.palette.mode === 'light' ? darkTheme : lightTheme);
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App toggleTheme={toggleTheme} />
+    </ThemeProvider>
+  );
+}
+
+root.render(<Index />);

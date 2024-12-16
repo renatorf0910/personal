@@ -1,76 +1,44 @@
-import * as React from 'react';
-import Accordion, { accordionClasses } from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails, {
-  accordionDetailsClasses,
-} from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Fade from '@mui/material/Fade';
+import React, { useEffect, useState } from 'react';
+import Button from '@mui/material/Button';
+import LanguagesDialog from './languages/LanguagesDialog';
+import * as language from "./languages/dict_infos.json"
 
 export default function Experience() {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState({ open: false, title: "", description: "" });
 
-  const handleExpansion = () => {
-    setExpanded((prevExpanded) => !prevExpanded);
+  const handleClickOpen = (key, value) => {
+    setExpanded({ open: true, title: key, description: value });
+  };
+
+  const handleClose = () => {
+    setExpanded({ open: false, title: "", description: "" });
   };
 
   return (
-    <div>
-      <Accordion
-        expanded={expanded}
-        onChange={handleExpansion}
-        slots={{ transition: Fade }}
-        slotProps={{ transition: { timeout: 400 } }}
-        sx={[
-          expanded
-            ? {
-                [`& .${accordionClasses.region}`]: {
-                  height: 'auto',
-                },
-                [`& .${accordionDetailsClasses.root}`]: {
-                  display: 'block',
-                },
-              }
-            : {
-                [`& .${accordionClasses.region}`]: {
-                  height: 0,
-                },
-                [`& .${accordionDetailsClasses.root}`]: {
-                  display: 'none',
-                },
-              },
-        ]}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-        >
-          <Typography>Custom transition using Fade</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography>Default transition using Collapse</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+      {Object.entries(language).map(([key, value]) => {
+        if (key !== 'default') {
+          return (
+            <div style={{ margin: "5px" }} key={key}>
+              <Button
+                variant="outlined"
+                onClick={() => handleClickOpen(key, value)}
+                sx={{
+                  color: 'grey',
+                  borderColor: '#e792f1',
+                  '&:hover': {
+                    backgroundColor: 'grey',
+                    color: 'white'
+                  }
+                }}
+              >
+                {key}
+              </Button>
+            </div>
+          );
+        }
+      })}
+      <LanguagesDialog open={expanded?.open} title={expanded?.title} description={expanded?.description} close={handleClose} />
     </div>
   );
 }

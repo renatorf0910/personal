@@ -1,39 +1,39 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import ProTip from './ProTip';
-import Experience from './components/experience/Experience';
 import Profile from './components/profile/Profile';
-
-function Copyright() {
-  return (
-    <Typography
-      variant="body2"
-      align="center"
-      sx={{
-        color: 'text.secondary',
-      }}
-    >
-      <Typography>
-        {`Copyright © Renato Rocha Ferreira ${new Date().getFullYear()}`}
-      </Typography>{' '}
-    </Typography>
-  );
-}
+import { ThemeProvider, createTheme, CssBaseline, IconButton } from '@mui/material';
+import { Brightness4, Brightness7 } from '@mui/icons-material';
 
 export default function App() {
+  const [mode, setMode] = useState('dark');
+  const lightTheme = createTheme({
+    palette: {
+      mode: 'light',
+    },
+  });
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+  const toggleTheme = () => {
+    setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        
-        <Profile />
-        <Experience />
-        <ProTip />
-        
-        <Copyright />
+    <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
+      <CssBaseline />
+      <Container maxWidth="sm">
+        <Box sx={{ my: 4 }}>
+          <Profile />
+        </Box>
+      </Container>
+      <Box sx={{ position: 'fixed', top: 16, right: 16 }}>
+        <IconButton onClick={toggleTheme} color="inherit">
+          {mode === 'light' ? <Brightness4 /> : <Brightness7 />}
+        </IconButton>
       </Box>
-    </Container>
+    </ThemeProvider>
   );
 }
